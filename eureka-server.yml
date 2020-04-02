@@ -1,0 +1,33 @@
+my-eureka-cluster:
+  port:
+    peer1: 8761
+    peer2: 8762
+  name: eureka-cluster
+---
+spring:
+  profiles: peer1
+eureka:
+  instance:
+    hostname: eureka-peer1
+    appname: ${my-eureka-cluster.name}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-peer2:8762/eureka
+server:
+  port: ${my-eureka-cluster.port.peer1}
+---
+spring:
+  profiles: peer2
+eureka:
+  instance:
+    hostname: eureka-peer2
+    appname: ${my-eureka-cluster.name}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-peer1:8761/eureka
+server:
+  port: ${my-eureka-cluster.port.peer2}
