@@ -1,0 +1,16 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-peer1:8761/eureka,http://eureka-peer2:8762/eureka
+---
+spring:
+  profiles: polite
+decisions: Good day, Perfect moment
+server:
+  port: 8080
+---
+spring:
+  profiles: rough
+decision: Last time, The Time
+server:
+  port: 8001
