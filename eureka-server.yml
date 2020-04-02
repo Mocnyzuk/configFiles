@@ -16,7 +16,7 @@ eureka:
     serviceUrl:
       defaultZone: http://eureka-peer2:8762/eureka
 server:
-  port: $p
+  port: ${my-eureka-cluster.port.peer1}
 ---
 spring:
   profiles: peer2
