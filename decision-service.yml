@@ -7,7 +7,7 @@ spring:
   profiles: polite
 decisions: Good day, Perfect moment
 server:
-  port: 8080
+  port: 8000
 ---
 spring:
   profiles: rough
